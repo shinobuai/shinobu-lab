@@ -24,8 +24,44 @@
 
   <button class="lang-toggle" onclick="toggleLanguage()">日本語</button>
 
-  <h1 class="lang en">Welcome to My GitHub Pages Site!</h1>
-  <h1 class="lang ja">GitHub Pagesサイトへようこそ！</h1>
+  <!-- English content -->
+  <div class="lang en">
+    <h1>Welcome to My GitHub Pages Site!</h1>
+    <p>This is where we share our lab's latest research and news.</p>
+  </div>
 
-  <p class="lang en">This is where we share our lab's latest research and news.</p>
-  <p class="lang ja">ここでは私たちの研究室の最新の研究やニュース
+  <!-- Japanese content -->
+  <div class="lang ja">
+    <h1>GitHub Pagesサイトへようこそ！</h1>
+    <p>ここでは私たちの研究室の最新の研究やニュースを紹介しています。</p>
+  </div>
+
+  <script>
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      const enElements = document.querySelectorAll('.en');
+      const jaElements = document.querySelectorAll('.ja');
+      const toggleBtn = document.querySelector('.lang-toggle');
+
+      if (currentLang === 'en') {
+        enElements.forEach(el => el.style.display = 'none');
+        jaElements.forEach(el => el.style.display = 'block');
+        toggleBtn.textContent = 'English';
+        currentLang = 'ja';
+      } else {
+        enElements.forEach(el => el.style.display = 'block');
+        jaElements.forEach(el => el.style.display = 'none');
+        toggleBtn.textContent = '日本語';
+        currentLang = 'en';
+      }
+    }
+
+    // Show English by default on load
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.en').forEach(el => el.style.display = 'block');
+    });
+  </script>
+
+</body>
+</html>
