@@ -1,9 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Lab Website</title> 
+  <meta charset="UTF-8">
+  <title>My Lab Website</title> 
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    .lang {
+      display: none;
+    }
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to My GitHub Pages Site!</h1>
-</body>
-</html>
+
+  <button class="lang-toggle" onclick="toggleLanguage()">日本語</button>
+
+  <h1 class="lang en">Welcome to My GitHub Pages Site!</h1>
+  <h1 class="lang ja">GitHub Pagesサイトへようこそ！</h1>
+
+  <p class="lang en">This is where we share our lab's latest research and news.</p>
+  <p class="lang ja">ここでは私たちの研究室の最新の研究やニュース
