@@ -18,43 +18,44 @@
       padding: 5px 10px;
       cursor: pointer;
     }
+    .tab-content {
+      margin-top: 20px;
+    }
+    .tab-buttons {
+      margin-top: 10px;
+    }
+    .tab-buttons button {
+      margin-right: 10px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
   <button class="lang-toggle" onclick="toggleLanguage()">日本語</button>
 
-  function showTab(tabName) {
-  document.querySelectorAll('.tab-content').forEach(el => {
-    el.style.display = 'none';
-  });
-
-  const target = document.getElementById('tab-' + tabName);
-  if (target) target.style.display = 'block';
-}
-
-
   <!-- English content -->
   <div class="lang en">
     <h1>Welcome to My GitHub Pages Site!</h1>
     <p>This is where we share our lab's latest research and news.</p>
-  </div>
 
-   <!-- Tab Buttons -->
-  <div>
-    <button onclick="showTab('research')">Research</button>
-    <button onclick="showTab('contact')">Access / Contact</button>
-  </div>
+    <!-- Tab Buttons -->
+    <div class="tab-buttons">
+      <button onclick="showTab('research')">Research</button>
+      <button onclick="showTab('contact')">Access / Contact</button>
+    </div>
 
-   <!-- Tab Content -->
-  <div id="tab-research" class="tab-content">
-    <h2>Research</h2>
-    <p>We study molecular dynamics simulations and systems biology integration.</p>
-  </div>
+    <!-- Tab Content -->
+    <div id="tab-research" class="tab-content">
+      <h2>Research</h2>
+      <p>We study molecular dynamics simulations and systems biology integration.</p>
+    </div>
 
-   <div id="tab-contact" class="tab-content" style="display: none;">
-    <h2>Access / Contact</h2>
-    <p>Email: example@lab.jp<br>Address: Osaka University, Suita Campus...</p>
+    <div id="tab-contact" class="tab-content" style="display: none;">
+      <h2>Access / Contact</h2>
+      <p>Email: example@lab.jp<br>Address: Osaka University, Suita Campus...</p>
+    </div>
   </div>
 
   <!-- Japanese content -->
@@ -63,6 +64,7 @@
     <p>ここでは私たちの研究室の最新の研究やニュースを紹介しています。</p>
   </div>
 
+  <!-- Scripts -->
   <script>
     let currentLang = 'en';
 
@@ -82,6 +84,14 @@
         toggleBtn.textContent = '日本語';
         currentLang = 'en';
       }
+    }
+
+    function showTab(tabName) {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.style.display = 'none');
+
+      const target = document.getElementById('tab-' + tabName);
+      if (target) target.style.display = 'block';
     }
 
     // Show English by default on load
