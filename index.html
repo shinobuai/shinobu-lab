@@ -67,6 +67,23 @@
   <div class="lang ja">
     <h1>GitHub Pagesサイトへようこそ！</h1>
     <p>ここでは私たちの研究室の最新の研究やニュースを紹介しています。</p>
+
+    <!-- Japanese Tab Buttons -->
+    <div class="tab-buttons">
+      <button onclick="showTabJa('research')">研究内容</button>
+      <button onclick="showTabJa('contact')">アクセス / お問い合わせ</button>
+    </div>
+
+    <!-- Japanese Tab Content -->
+    <div id="tab-research-ja" class="tab-content">
+      <h2>研究内容</h2>
+      <p>私たちは分子動力学シミュレーションとシステム生物学の統合に取り組んでいます。</p>
+    </div>
+
+    <div id="tab-contact-ja" class="tab-content" style="display: none;">
+      <h2>アクセス / お問い合わせ</h2>
+      <p>メール: example@lab.jp<br>住所: 大阪大学 吹田キャンパス</p>
+    </div>
   </div>
 
   <script>
@@ -82,25 +99,31 @@
         jaElements.forEach(el => el.style.display = 'block');
         toggleBtn.textContent = 'English';
         currentLang = 'ja';
+        showTabJa('research'); // default tab for Japanese
       } else {
         enElements.forEach(el => el.style.display = 'block');
         jaElements.forEach(el => el.style.display = 'none');
         toggleBtn.textContent = '日本語';
         currentLang = 'en';
+        showTab('research'); // default tab for English
       }
     }
 
     function showTab(tabName) {
-      const tabs = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => tab.style.display = 'none');
+      document.getElementById('tab-research').style.display = 'none';
+      document.getElementById('tab-contact').style.display = 'none';
+      document.getElementById('tab-' + tabName).style.display = 'block';
+    }
 
-      const target = document.getElementById('tab-' + tabName);
-      if (target) target.style.display = 'block';
+    function showTabJa(tabName) {
+      document.getElementById('tab-research-ja').style.display = 'none';
+      document.getElementById('tab-contact-ja').style.display = 'none';
+      document.getElementById('tab-' + tabName + '-ja').style.display = 'block';
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.en').forEach(el => el.style.display = 'block');
-      showTab('research'); // Show Research tab by default
+      showTab('research');
     });
   </script>
 
