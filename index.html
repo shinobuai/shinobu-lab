@@ -48,7 +48,7 @@
     <!-- Tab Buttons -->
     <div class="tab-buttons">
       <a href="research.html">Research</a>
-      <a href="research.html">Access/contact</a>
+      <a href="contact.html">Access/contact</a>
     </div>
 
 
@@ -61,57 +61,41 @@
 
     <!-- Japanese Tab Buttons -->
     <div class="tab-buttons">
-      <a href="research.html">Research</a>
-      <a href="research.html">Acess/contact</a>
+      <a href="research.html">研究</a>
+      <a href="contact.html">アクセス/お問い合わせ</a>
     </div>
 
     <!-- Japanese Tab Content -->
 
   </div>
 
-  <script>
-    let currentLang = localStorage.getItem('lang') || 'en';
+<script>
+  let currentLang = localStorage.getItem('lang') || 'en';
 
-    function toggleLanguage() {
-      currentLang = (currentLang === 'en') ? 'ja' : 'en';
-      localStorage.setItem('lang', currentLang);
-      updateLanguage();
+  function toggleLanguage() {
+    currentLang = (currentLang === 'en') ? 'ja' : 'en';
+    localStorage.setItem('lang', currentLang);
+    updateLanguage();
+  }
+
+  function updateLanguage() {
+    const enElements = document.querySelectorAll('.en');
+    const jaElements = document.querySelectorAll('.ja');
+    const toggleBtn = document.querySelector('.lang-toggle');
+
+    if (currentLang === 'en') {
+      enElements.forEach(el => el.style.display = 'block');
+      jaElements.forEach(el => el.style.display = 'none');
+      toggleBtn.textContent = '日本語';
+    } else {
+      enElements.forEach(el => el.style.display = 'none');
+      jaElements.forEach(el => el.style.display = 'block');
+      toggleBtn.textContent = 'English';
     }
+  }
 
-    function updateLanguage() {
-      const enElements = document.querySelectorAll('.en');
-      const jaElements = document.querySelectorAll('.ja');
-      const toggleBtn = document.querySelector('.lang-toggle');
-
-      if (currentLang === 'en') {
-        enElements.forEach(el => el.style.display = 'block');
-        jaElements.forEach(el => el.style.display = 'none');
-        toggleBtn.textContent = '日本語';
-        showTab('research');
-      } else {
-        enElements.forEach(el => el.style.display = 'none');
-        jaElements.forEach(el => el.style.display = 'block');
-        toggleBtn.textContent = 'English';
-        showTabJa('research');
-      }
-    }
-
-    function showTab(tabName) {
-      document.getElementById('tab-research').style.display = 'none';
-      document.getElementById('tab-contact').style.display = 'none';
-      document.getElementById('tab-' + tabName).style.display = 'block';
-    }
-
-    function showTabJa(tabName) {
-      document.getElementById('tab-research-ja').style.display = 'none';
-      document.getElementById('tab-contact-ja').style.display = 'none';
-      document.getElementById('tab-' + tabName + '-ja').style.display = 'block';
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      updateLanguage();
-    });
-  </script>
+  document.addEventListener('DOMContentLoaded', updateLanguage);
+</script>
 
 </body>
 </html>
