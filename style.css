@@ -1,0 +1,43 @@
+/* Base */
+:root{
+  --bg:#ffffff;
+  --text:#111;
+  --muted:#666;
+  --brand:#0b5bd3;
+  --brand-quiet:#e8f0fe;
+  --border:#e5e7eb;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.6;
+}
+.container{max-width:960px;margin:0 auto;padding:24px}
+
+/* Navbar */
+.navbar{
+  border-bottom:1px solid var(--border);
+  background:#fff;
+  position:sticky; top:0; z-index:10;
+}
+.navbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:960px;margin:0 auto;padding:12px 24px}
+.logo{font-weight:700;text-decoration:none;color:var(--text)}
+.nav-links{display:flex;flex-wrap:wrap;gap:12px}
+.nav-links a{
+  text-decoration:none;color:var(--text);padding:6px 10px;border-radius:10px;
+}
+.nav-links a:hover{background:var(--brand-quiet)}
+.nav-links a.active{background:var(--brand-quiet);color:var(--brand);}
+
+/* Content */
+h1{margin:24px 0 12px;line-height:1.25}
+p,ul{margin:12px 0}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Utility */
+.lang-switch{font-size:0.95rem;color:var(--muted)}
+
