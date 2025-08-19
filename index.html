@@ -1,111 +1,92 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Lab Website</title> 
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 20px;
-    }
-
-    .lang {
-      display: none;
-    }
-
-    .lang-toggle {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      padding: 5px 10px;
-      cursor: pointer;
-    }
-
-    .tab-buttons {
-      margin-top: 10px;
-    }
-
-    .tab-buttons button {
-      margin-right: 10px;
-      padding: 6px 12px;
-      cursor: pointer;
-    }
-
-    .tab-content {
-      margin-top: 20px;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <title>My Lab Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-
-  <button class="lang-toggle" onclick="toggleLanguage()">日本語</button>
+  <button class="lang-toggle" onclick="toggleLanguage()" id="langToggle">日本語</button>
 
   <!-- English content -->
   <div class="lang en">
-   <header class="navbar">
-    <a href="index.html" class="logo">MyLab</a>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="research.html">Research</a>
-      <a href="contact.html">Contact</a>
-      <a href="publications.html">Publications</a>
-      <a href="members.html">Members</a>
-      <a href="links.html">links</a>
-    </nav>
-  </header>
-    <h1>Welcome to My GitHub Pages Site!</h1>
-    <p>This is where we share our lab's latest research and news.</p>
+    <header class="navbar">
+      <div class="navbar-inner">
+        <a href="index.html" class="logo">MyLab</a>
+        <nav class="nav-links">
+          <a href="index.html" class="active">Home</a>
+          <a href="research.html">Research</a>
+          <a href="contact.html">Contact</a>
+          <a href="publications.html">Publications</a>
+          <a href="members.html">Members</a>
+          <a href="links.html">Links</a>
+        </nav>
+      </div>
+    </header>
 
-
+    <main class="container">
+      <p class="lang-switch"><a href="#" onclick="toggleLanguage(); return false;">日本語</a></p>
+      <h1>Welcome to My GitHub Pages Site!</h1>
+      <p>This is where we share our lab's latest research and news.</p>
+    </main>
   </div>
 
   <!-- Japanese content -->
   <div class="lang ja">
-   <header class="navbar">
-    <a href="index.html" class="logo">MyLab</a>
-    <nav class="nav-links">
-      <a href="index.html">ホーム</a>
-      <a href="research-jp.html">研究</a>
-      <a href="contact-jp.html">アクセス / お問い合わせ</a>
-      <a href="publications-jp.html">業績リスト</a>
-      <a href="members-jp.html">メンバー</a>
-      <a href="links-jp.html">リンク</a>
-    </nav>
-  </header>
-    <h1>GitHub Pagesサイトへようこそ！</h1>
-    <p>ここでは私たちの研究室の最新の研究やニュースを紹介しています。</p>
+    <header class="navbar">
+      <div class="navbar-inner">
+        <a href="index.html" class="logo">MyLab</a>
+        <nav class="nav-links">
+          <a href="index.html" class="active">ホーム</a>
+          <a href="research-jp.html">研究</a>
+          <a href="contact-jp.html">アクセス / お問い合わせ</a>
+          <a href="publications-jp.html">業績リスト</a>
+          <a href="members-jp.html">メンバー</a>
+          <a href="links-jp.html">リンク</a>
+        </nav>
+      </div>
+    </header>
 
+    <main class="container">
+      <p class="lang-switch"><a href="#" onclick="toggleLanguage(); return false;">English</a></p>
+      <h1>GitHub Pagesサイトへようこそ！</h1>
+      <p>ここでは私たちの研究室の最新の研究やニュースを紹介しています。</p>
+    </main>
   </div>
 
-<script>
-  let currentLang = localStorage.getItem('lang') || 'en';
+  <script>
+    let currentLang = localStorage.getItem('lang') || 'en';
 
-  function toggleLanguage() {
-    currentLang = (currentLang === 'en') ? 'ja' : 'en';
-    localStorage.setItem('lang', currentLang);
-    updateLanguage();
-  }
-
-  function updateLanguage() {
-    const enElements = document.querySelectorAll('.en');
-    const jaElements = document.querySelectorAll('.ja');
-    const toggleBtn = document.querySelector('.lang-toggle');
-
-    if (currentLang === 'en') {
-      enElements.forEach(el => el.style.display = 'block');
-      jaElements.forEach(el => el.style.display = 'none');
-      toggleBtn.textContent = '日本語';
-    } else {
-      enElements.forEach(el => el.style.display = 'none');
-      jaElements.forEach(el => el.style.display = 'block');
-      toggleBtn.textContent = 'English';
+    function toggleLanguage() {
+      currentLang = (currentLang === 'en') ? 'ja' : 'en';
+      localStorage.setItem('lang', currentLang);
+      updateLanguage();
     }
-  }
 
-  document.addEventListener('DOMContentLoaded', updateLanguage);
-</script>
+    function updateLanguage() {
+      const enEls = document.querySelectorAll('.en');
+      const jaEls = document.querySelectorAll('.ja');
+      const btn = document.getElementById('langToggle');
+
+      if (currentLang === 'en') {
+        enEls.forEach(el => el.style.display = 'block');
+        jaEls.forEach(el => el.style.display = 'none');
+        if (btn) btn.textContent = '日本語';
+        // update small link text too
+        document.querySelectorAll('.lang-switch a').forEach(a => a.textContent = '日本語');
+      } else {
+        enEls.forEach(el => el.style.display = 'none');
+        jaEls.forEach(el => el.style.display = 'block');
+        if (btn) btn.textContent = 'English';
+        document.querySelectorAll('.lang-switch a').forEach(a => a.textContent = 'English');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', updateLanguage);
+  </script>
 
 </body>
 </html>
+
