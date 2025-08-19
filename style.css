@@ -44,59 +44,61 @@ a:hover{text-decoration:underline}
 /* Language toggle + language blocks */
 .lang { display: none; }
 
-/* Hero banner */
+/* HERO BANNER */
 .hero{
-  /* Background: image with gradient overlay, or fallback to brand-quiet */
-  --hero-image: none; /* overridden inline if you pass a URL */
-  background:
-    linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-    var(--hero-image),
-    var(--brand-quiet);
-  background-size: cover;
-  background-position: center;
-  border: 1px solid var(--border);
+  position: relative;
+  margin: 20px 0 28px;
   border-radius: 16px;
-  margin: 16px 0 24px;
-  color: #fff;
-  min-height: 220px;
+  overflow: hidden;
 
-  /* Layout */
+  /* Works even without image */
+  background: var(--brand);
+  color: #fff;
+  min-height: 280px;
+
   display: flex;
   align-items: flex-end;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
 }
 
+/* Background image + overlay (only when you pass --hero-image) */
+.hero[style*="--hero-image"]::before{
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.35)),
+    var(--hero-image);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Text block */
 .hero-inner{
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 36px 24px 28px;
+  position: relative; z-index: 1;
+  max-width: 960px; margin: 0 auto;
   width: 100%;
+  padding: 40px 24px 32px;
 }
 
 .hero-title{
   margin: 0;
-  line-height: 1.1;
+  line-height: 1.08;
   font-weight: 800;
-  /* Scales with viewport: big but responsive */
-  font-size: clamp(28px, 6vw, 56px);
-  /* If no image, switch to brand color */
-  color: inherit;
+  font-size: clamp(32px, 6.5vw, 60px);
 }
 
 .hero-sub{
-  margin: 8px 0 0;
+  margin: 10px 0 0;
   line-height: 1.3;
   font-weight: 500;
-  font-size: clamp(16px, 2.3vw, 22px);
-  opacity: 0.95;
+  font-size: clamp(16px, 2.2vw, 22px);
+  opacity: .95;
 }
 
-/* No-image variant: soft box in brand colors */
-.hero:not([style*="--hero-image:url"]){
+/* If no image was provided, use brand-quiet box with brand text */
+.hero:not([style*="--hero-image"]){
   background: var(--brand-quiet);
   color: var(--text);
 }
-.hero:not([style*="--hero-image:url"]) .hero-title{
-  color: var(--brand);
-}
-
+.hero:not([style*="--hero-image"]) .hero-title{ color: var(--brand); }
 
