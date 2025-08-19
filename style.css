@@ -44,3 +44,21 @@ a:hover{text-decoration:underline}
 /* Language toggle + language blocks */
 .lang { display: none; }
 
+
+/* Lab banner */
+.lab-banner {
+  background: var(--brand-quiet); /* light brand color */
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.lab-banner h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--brand);
+}
+
