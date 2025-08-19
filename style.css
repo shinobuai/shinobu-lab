@@ -47,21 +47,18 @@ a:hover{text-decoration:underline}
 /* HERO BANNER */
 .hero{
   position: relative;
-  margin: 20px 0 28px;
-  border-radius: 16px;
-  overflow: hidden;
-
-  /* Works even without image */
+  width: 100%;            /* full width */
+  min-height: 180px;      /* shorter default height */
+  max-height: 320px;      /* prevent too tall banners */
   background: var(--brand);
   color: #fff;
-  min-height: 280px;
-
   display: flex;
   align-items: flex-end;
-  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  justify-content: center;
+  overflow: hidden;
 }
 
-/* Background image + overlay (only when you pass --hero-image) */
+
 .hero[style*="--hero-image"]::before{
   content: "";
   position: absolute; inset: 0;
