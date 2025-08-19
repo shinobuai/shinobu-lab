@@ -41,3 +41,17 @@ a:hover{text-decoration:underline}
 /* Utility */
 .lang-switch{font-size:0.95rem;color:var(--muted)}
 
+/* Language toggle + language blocks */
+.lang { display: none; }
+.lang-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
